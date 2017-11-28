@@ -5,7 +5,9 @@ import { ModalService } from './modal/modal.service';
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
   template: `
-    <button (click)='modalService.open(modalId)'>Open Modal</button>
+    <app-navbar (modalEvent)='openModal()'></app-navbar>
+    <main></main>
+
     <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='modalId'>
       <div>Text inside the modal</div>
     </app-modal>
@@ -17,4 +19,8 @@ export class AppComponent {
   constructor(
     public modalService: ModalService
   ) {}
+
+  openModal = () => {
+    this.modalService.open(this.modalId);
+  }
 }
